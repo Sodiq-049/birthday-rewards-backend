@@ -11,7 +11,7 @@ async function bootstrap() {
   app.enableCors({
     origin: [
       "http://localhost:5173",
-      "https://birthday-rewards-frontend.vercel.app" // ❌ removed trailing slash
+      "https://birthday-rewards-frontend.vercel.app"
     ],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
     allowedHeaders: '*',
