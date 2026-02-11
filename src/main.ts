@@ -10,7 +10,7 @@ async function bootstrap() {
   app.enableCors({
       origin: [
     "http://localhost:5173",
-    "https://birthday-rewards-frontend-git-main-sodiq049s-projects.vercel.app/"
+    "https://birthday-rewards-frontend.vercel.app/"
   ],
   })
 
