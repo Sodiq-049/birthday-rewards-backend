@@ -8,7 +8,10 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule)
 
   app.enableCors({
-    origin: '*', // OK for now, we can tighten later
+      origin: [
+    "http://localhost:5173",
+    "https://birthday-rewards-frontend-git-main-sodiq049s-projects.vercel.app/"
+  ],
   })
 
   const port = process.env.PORT || 3000
