@@ -7,11 +7,15 @@ async function bootstrap() {
 
   const app = await NestFactory.create(AppModule)
 
+  // CORS setup for local dev + Vercel frontend
   app.enableCors({
-      origin: [
-    "http://localhost:5173",
-    "https://birthday-rewards-frontend.vercel.app/"
-  ],
+    origin: [
+      "http://localhost:5173",
+      "https://birthday-rewards-frontend.vercel.app" // ❌ removed trailing slash
+    ],
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+    allowedHeaders: '*',
+    credentials: true, // if you need cookies/auth
   })
 
   const port = process.env.PORT || 3000
