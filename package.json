@@ -26,6 +26,7 @@
     "@nestjs/mongoose": "^11.0.4",
     "@nestjs/platform-express": "^11.0.1",
     "@nestjs/schedule": "^6.1.1",
+    "@sendgrid/mail": "^8.1.6",
     "@types/node": "^22.19.11",
     "dotenv": "^17.2.3",
     "mongoose": "^9.1.5",

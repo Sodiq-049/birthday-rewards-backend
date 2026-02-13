@@ -63,6 +63,7 @@ export class RegistrationsService {
                 // Send birthday email
                 await this.emailService.sendBirthdayEmail(
                 parent.email,
+                parent.title,
                 parent.fullName,
                 child.name,
                 )
@@ -106,6 +107,7 @@ export class RegistrationsService {
 
         await this.emailService.sendRewardClaimEmail(
         parent.email,
+        parent.title,
         parent.fullName,
         child.name,
         )

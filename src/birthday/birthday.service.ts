@@ -45,6 +45,7 @@ export class BirthdayService {
         ) {
           await this.emailService.sendBirthdayEmail(
             parent.email,
+            parent.title,
             parent.fullName,
             child.name,
           )
