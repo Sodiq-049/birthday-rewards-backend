@@ -53,6 +53,8 @@ export class EmailService {
 
         <p>Visit our store and present this email to redeem.</p>
 
+        <p>Kindly note that the gift voucher will expire at the end of the month.</p>
+
         <p>With love,<br/>
         <strong>The Little Big Kid</strong></p>
         `,
