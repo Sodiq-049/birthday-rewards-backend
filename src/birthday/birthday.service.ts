@@ -1,9 +1,9 @@
-import { Injectable } from '@nestjs/common'
-import { Cron } from '@nestjs/schedule'
-import { InjectModel } from '@nestjs/mongoose'
-import { Model } from 'mongoose'
-import { Parent } from '../registrations/schemas/parent.schema'
-import { EmailService } from '../email/email.service'
+import { Injectable } from '@nestjs/common';
+import { Cron } from '@nestjs/schedule';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
+import { Parent } from '../registrations/schemas/parent.schema';
+import { EmailService } from '../email/email.service';
 
 @Injectable()
 export class BirthdayService {
@@ -14,13 +14,13 @@ export class BirthdayService {
   ) {}
 
   // Runs every day at 8:00 AM
-  @Cron('* * * * *')
+  @Cron('0 9 * * *')
   async sendBirthdayEmails() {
-    console.log('🎂 Birthday cron running:', new Date())
+    console.log('🎂 Birthday cron running:', new Date());
 
-    const today = new Date()
-    const todayMonth = today.getMonth() + 1
-    const todayDay = today.getDate()
+    const today = new Date();
+    const todayMonth = today.getMonth() + 1;
+    const todayDay = today.getDate();
 
     const parents = await this.parentModel.find({
       children: {
@@ -33,11 +33,11 @@ export class BirthdayService {
           },
         },
       },
-    })
+    });
 
     for (const parent of parents) {
       for (const child of parent.children) {
-        const birthday = new Date(child.birthday)
+        const birthday = new Date(child.birthday);
 
         if (
           birthday.getDate() === todayDay &&
@@ -48,7 +48,7 @@ export class BirthdayService {
             parent.title,
             parent.fullName,
             child.name,
-          )
+          );
         }
       }
     }

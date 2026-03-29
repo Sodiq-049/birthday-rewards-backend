@@ -1,19 +1,19 @@
 import { Injectable } from '@nestjs/common';
 import sgMail from '@sendgrid/mail';
 
-
 @Injectable()
 export class EmailService {
-    constructor() {
+  constructor() {
     const apiKey = process.env.SENDGRID_API_KEY;
 
     if (!apiKey) {
-      throw new Error('SENDGRID_API_KEY is not defined in environment variables');
+      throw new Error(
+        'SENDGRID_API_KEY is not defined in environment variables',
+      );
     }
 
     sgMail.setApiKey(apiKey);
   }
-
 
   async sendThankYouEmail(to: string, name?: string) {
     await sgMail.send({
@@ -21,7 +21,7 @@ export class EmailService {
       from: `"Birthday Rewards" <${process.env.SENDER_EMAIL}>`,
       subject: 'Thank you for registering 🎉',
       html: `
-        <h2>Thank you for registering!</h2>
+        <h2>Thank you for registering${name ? `, $(name)` : ''}!</h2>
         <p>Your child has been enrolled in our Birthday Rewards Program 🎂</p>
       `,
     });
