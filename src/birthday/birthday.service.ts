@@ -14,26 +14,17 @@ export class BirthdayService {
   ) {}
 
   // Runs every day at 8:00 AM
-  @Cron('0 9 * * *')
+  @Cron('0 9 * * *', {
+    timeZone: 'Africa/Lagos',
+  })
   async sendBirthdayEmails() {
     console.log('🎂 Birthday cron running:', new Date());
 
     const today = new Date();
-    const todayMonth = today.getMonth() + 1;
+    const todayMonth = today.getMonth();
     const todayDay = today.getDate();
 
-    const parents = await this.parentModel.find({
-      children: {
-        $elemMatch: {
-          $expr: {
-            $and: [
-              { $eq: [{ $dayOfMonth: '$birthday' }, todayDay] },
-              { $eq: [{ $month: '$birthday' }, todayMonth] },
-            ],
-          },
-        },
-      },
-    });
+    const parents = await this.parentModel.find();
 
     for (const parent of parents) {
       for (const child of parent.children) {
@@ -41,8 +32,10 @@ export class BirthdayService {
 
         if (
           birthday.getDate() === todayDay &&
-          birthday.getMonth() + 1 === todayMonth
+          birthday.getMonth() === todayMonth
         ) {
+          console.log(`🎉 Sending birthday email to ${parent.email}`);
+
           await this.emailService.sendBirthdayEmail(
             parent.email,
             parent.title,
