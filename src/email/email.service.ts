@@ -15,7 +15,7 @@ export class EmailService {
     sgMail.setApiKey(apiKey);
   }
 
-  async sendThankYouEmail(to: string, name?: string) {
+  async sendThankYouEmail(to: string) {
     await sgMail.send({
       to,
       from: `"Birthday Rewards" <${process.env.SENDER_EMAIL}>`,

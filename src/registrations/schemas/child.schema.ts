@@ -1,22 +1,22 @@
-import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose'
-import { Document } from 'mongoose'
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { Document } from 'mongoose';
 
 @Schema()
 export class Child {
   @Prop({ required: true })
-  name: string
+  name!: string;
 
   @Prop({ required: true })
-  birthday: Date
+  birthday!: Date;
 
   @Prop({ required: true, enum: ['Male', 'Female'] })
-  gender: string
+  gender!: string;
 
   @Prop({ default: false })
-  rewardClaimed: boolean
+  rewardClaimed!: boolean;
 
   @Prop({ default: null })
-  lastBirthdayEmailSent?: Date
+  lastBirthdayEmailSent?: Date;
 }
 
-export const ChildSchema = SchemaFactory.createForClass(Child)
+export const ChildSchema = SchemaFactory.createForClass(Child);
