@@ -7,6 +7,7 @@ export const ADMIN_EMAILS = [
   'tobi.tlbkc@gmail.com',
   'elizabetha.tlbkc@gmail.com',
   'Toyosi@thelittlebigkid.net',
-]
+  'joanokenwa1@gmail.com',
+];
 
-export const ADMIN_PASSWORD = 'LittleBigKid1'
+export const ADMIN_PASSWORD = 'LittleBigKid1';
